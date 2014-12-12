@@ -1,0 +1,65 @@
+buildscript {
+    ext {
+        springBootVersion = '1.1.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot' 
+
+jar {
+    baseName = 'Prototype'
+    version = '0.1'
+}
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+	compile("org.codehaus.jackson:jackson-core-asl:1.1.0")
+	compile("com.fasterxml.jackson.core:jackson-databind:2.0.0")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("commons-io:commons-io:2.4")
+    compile("com.fasterxml.jackson.core:jackson-annotations:2.2.1")
+	compile("javax.mail:mail:1.4.1")
+    compile("org.json:json:20140107")	
+	
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDir ("src/main/java/com/userinterface")
+		}
+	}
+}
+
+eclipse {
+    classpath {
+         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+         containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7'
+    }
+}
+
+bootRepackage {
+    mainClass = 'prototype.WebPrototype'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}

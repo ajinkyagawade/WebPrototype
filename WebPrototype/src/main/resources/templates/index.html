@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login Page</title>
+
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.css"></link>
+<link rel="stylesheet" type="text/css" href="./css/style.css"></link>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+<script type="text/javascript" src="./js/app.js"></script>
+<script type="text/javascript" src="./js/bootstrap.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.carousel').carousel({
+			interval : 2000
+		});
+	});
+</script>
+</head>
+<body style="background-color: #39424B; color:#ffffff">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html" style="margin-left: 5px">Web Prototyping Tool</a>			
+		</div>
+	</div>
+	<br />
+	<div class="row">
+
+		<br />
+		<div class="vertical">
+
+			<div class=" well" id="signupForm">
+				<form method="post" action="#" th:action="@{/signup}"
+					th:object="${userbean}" id="signup">
+					<input type="text" th:field="*{uname}" placeHolder="First Name"
+						required="required"></input> <input type="email"
+						th:field="*{emailId}" placeHolder="Email Address"
+						required="required" /> <input type="password"
+						th:field="*{password}" placeHolder="password" required="required" />
+					<br /> <input type="submit" class="btn btn-primary alignright"
+						name="signup" value="Sign Up" id="signupbutton" />
+				</form>
+			</div>
+
+
+			<aside class="loginForm well">
+				<article>
+					<form method="post" action="#" th:action="@{/login}"
+						th:object="${userbean}" id="signin">
+						<input type="text" th:field="*{uname}" placeHolder="User Name"
+							required="required" /> <input type="password"
+							th:field="*{password}" placeHolder="Password" required="required" />
+						<br /> <input type="submit" class="btn btn-primary aligncenter"
+							name="login" value="Login" id="login" />
+					</form>
+				</article>
+			</aside>
+		</div>
+	</div>
+</body>
+</html>
+

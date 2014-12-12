@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.filestyle/1.1.0/js/bootstrap-filestyle.min.js" charset="utf-8"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./../css/style.css"/>
+    <script type="text/javascript" src="./../js/prototype_main.js"></script>
+   
+<style type="text/css">
+
+
+</style>
+<script> 
+$(document).ready(function(){
+	  $('#btnSave').click(function(){
+	   alert('Please Sign In to save your work');
+	  });
+	});
+</script> 
+
+
+
+</head>
+<body class="background" style="background-color: #39424B; color:#ffffff">
+<div class="navbar-wrapper">
+      <div class="container">
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+            </div>
+            <div class="navbar-collapse collapse">
+           
+              <ul class="nav navbar-nav">
+              
+				<li style="padding-top: 10px;padding-bottom: 10px; font-size: 20px;">Welcome <strong th:object="${user}" th:text="*{uname}"></strong></li>
+                
+              </ul>          
+            	<ul class="nav navbar-nav navbar-right" style="margin-right: 50px; font-color:#0033CC;">
+            		
+            		<li><a href="/index.html" >Log Out</a></li>
+            	</ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div id="navigator" style="float: left; position: absolute; margin-left: 30%; margin-top: 5%">
+    <div id="triangle-left" style="float: left; margin-left:-10%"></div>
+     <label id="lblImageName" style="position: absolute;margin-left: 35%"></label>
+    <div id="triangle-right" style="float: left; margin-left: 430px"></div>
+</div>
+<div id="helpmenu" style="float: right;position: absolute;display: block; margin-left: 70%; margin-top: 5%; width:330px;  ;">
+    <ul class="_">
+        <li>Click on Choose file and select images</li>
+        <li>Select the starting image</li>
+        <li>Select an area on image to make it clickable</li>
+        <li>Choose the next image using "Select next screen" dropdown</li>
+        <li>Click on Add Event</li>
+        <li>Click on Preview</li>
+    </ul>
+</div>
+<div  id="divMain" style="position: relative">
+<div id="listBoxImages" style="margin-top:8%;float: left;position: relative;  border: 1px solid white; width: 22%;height:540px;overflow: auto;">
+   
+</div>
+
+<div onmousedown="return false" id="YDR-Frame" class="frame" style="margin-left:6%">
+
+<img id="targetImage" src="./../img/white_bg.png"  name="" width="455px" height="455px"/>
+
+
+<div id="divDragable"></div>
+</div>
+
+<div id="help"><img src="./../img/help_icon.jpg" alt="" style="float: right;position: relative;margin-top: 13%;  margin-right: 3%;cursor: pointer;  height: 40px;width: 40px" title="Click for help"/></div>
+<div class="status2" style="float: right;margin-right: 3%;margin-top: 2%; border: 1px solid white; ">
+<br/>
+    <div style="float: left; position: absolute; margin-left: 4.2%;" class="btn btn-primary btn-file">
+        <input type="file" id="FileLocation" name="files[]" class="filestyle" data-buttonName="btn-primary" data-show-upload="false" data-show-caption="true" data-buttonText="Choose Files" multiple="multiple"></input>
+    </div>
+    <table width="100%" style="margin-left: 5%; margin-right: 5%;" >
+        <tr>
+            <td colspan="2" ><br/><br/><h5>Selection :</h5>
+
+                <div id="selection" class="selectiondiv" style="margin-left: 5%; margin-right: 5%;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <select id="listBox" name="listBox" style="width:360px;background-color: #232D37;color: white;" multiple="multiple">
+                        <option value="dragImage">Event List</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            <h5>Select next image :</h5>
+            </td>
+            <td>
+                <select id="selectedImage" name="selectedImage" style="min-width:210px; background: #E8EBEF;color: bLack;" >				
+                </select>
+            </td>
+        </tr>
+        <tr>	
+            <td colspan="2">
+	
+                <button id="addEvent" class="btn btn-primary" style="margin-right:1%">Add Event</button>
+                <button id="removeEvent" class="btn btn-primary" style="margin-right:1%">Remove Event</button>
+                <button id="previewPrototype" class="btn btn-primary" >Preview</button>               
+            </td>
+        </tr>
+    </table>
+
+</div>
+ 
+</div>
+
+<div id="preview" style="display: none;">
+    <div>
+    <div title="Close" class="close">X</div>
+    <img id="imagePreview"  width="455px" height="455px"/>
+    </div>
+    
+</div>
+
+</body>
+</html>
